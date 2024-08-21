@@ -1,6 +1,5 @@
 import AppRouter from "./routes/AppRouter";
 import Footer from "./components/Footer";
-import BlogList from "./components/BlogList";
 import React, { useState } from "react";
 
 function App() {
@@ -26,8 +25,7 @@ function App() {
   ]);
   return (
     <>
-      <AppRouter />
-      <BlogList blogs={blogs} />
+      <AppRouter blogs={blogs} />
       <Footer />
     </>
   );
