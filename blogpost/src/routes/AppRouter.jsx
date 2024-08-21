@@ -3,17 +3,18 @@ import NavBar from "../components/NavBar";
 import Home from "../components/Home";
 import About from "../components/About";
 import BlogList from "../components/BlogList";
+import Error from "../components/Error";
 
-const AppRouter = ({blogs}) => {
+const AppRouter = ({ blogs }) => {
   return (
     <>
       <Router>
-        <NavBar />
+      <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/blogList" element={<BlogList blogs=
-          {blogs}/>} />
+          <Route path="/blogList" element={<BlogList blogs={blogs} />} />
+          <Route path="*" element={<Error />} />
         </Routes>
       </Router>
     </>
