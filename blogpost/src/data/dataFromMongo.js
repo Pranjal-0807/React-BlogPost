@@ -1,8 +1,8 @@
 const mongoose = require(`mongoose`);
 
-const USER_NAME = "mit-user";
-const PASSWORD = "mit-password112";
-const DB_NAME = "mit-db-auth-react";
+const USER_NAME = "";
+const PASSWORD = "";
+const DB_NAME = "";
 
 const dbURI = `mongodb+srv://${USER_NAME}:${PASSWORD}@merncluster.zan8h.mongodb.net/${DB_NAME}?retryWrites=true&w=majority&appName=mernCluster`;
 
