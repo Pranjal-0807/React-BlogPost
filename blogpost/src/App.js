@@ -1,28 +1,32 @@
 import AppRouter from "./routes/AppRouter";
 import Footer from "./components/Footer";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function App() {
-  const [blogs, setBlogs] = useState([
-    {
-      id: 1,
-      title: "Blog Title 1",
-      content: "Blog Content 1",
-      author: "Author Name 1",
-    },
-    {
-      id: 2,
-      title: "Blog Title 2",
-      content: "Blog Content 2",
-      author: "Author Name 2",
-    },
-    {
-      id: 3,
-      title: "Blog Title 3",
-      content: "Blog Content 3",
-      author: "Author Name 3",
-    },
-  ]);
+  const [blogs, setBlogs] = useState(null);
+  const url = "http://localhost:3099/blogs";
+
+  useEffect(() => {
+    setTimeout(() => {
+      fetch(url)
+        .then((res) => {
+          console.dir("Fetch is successful");
+          if (res.ok) { 
+            return res.json();
+          } else {
+            throw Error("Error fetching data from API");
+          }
+        })
+        .then((blogs) => {
+          console.dir("JSON parsing is successful");
+          setBlogs(blogs);
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    }, 2000);
+  }, []);
+
   return (
     <>
       <AppRouter blogs={blogs} />
