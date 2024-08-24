@@ -6,22 +6,24 @@ import BlogList from "../components/BlogList";
 import Error from "../components/Error";
 import Contact from "../components/Contact";
 import NewBlog from "../components/NewBlog";
+import Footer from "../components/Footer";
 
-const AppRouter = ({ blogs }) => {
+const AppRouter = () => {
   return (
-    <>
+    <div className="App">
       <Router>
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/blogList" element={<BlogList blogs={blogs} />} />
+          <Route path="/blogList" element={<BlogList />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/newBlog" element={<NewBlog />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>
-    </>
+      <Footer />
+    </div>
   );
 };
 
