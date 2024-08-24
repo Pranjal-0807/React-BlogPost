@@ -10,7 +10,7 @@ function App() {
     setTimeout(() => {
       fetch(url)
         .then((res) => {
-          console.dir("Fetch is successful");
+          console.log("Fetch is successful");
           if (res.ok) { 
             return res.json();
           } else {
@@ -18,7 +18,7 @@ function App() {
           }
         })
         .then((blogs) => {
-          console.dir("JSON parsing is successful");
+          console.log("JSON parsing is successful");
           setBlogs(blogs);
         })
         .catch((err) => {

@@ -3,7 +3,7 @@ const BlogList = ({ blogs }) => {
     return blogs.map((blog) => {
       return (
         <>
-          <section>
+          <section style={{ borderLeft: "3px solid" }}>
             <div key={blog.id}>
               <h3>{blog.title}</h3>
               <p>{blog.content}</p>
@@ -16,7 +16,7 @@ const BlogList = ({ blogs }) => {
   }
   return (
     <section>
-      <h2 style={{textAlign:"center"}}>All Blogs</h2>
+      <h2 style={{ marginLeft: "8%" }}>All Blogs</h2>
       {printBlogs()}
     </section>
   );
