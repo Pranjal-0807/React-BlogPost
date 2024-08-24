@@ -16,7 +16,6 @@ const Blogs = ({ blogs }) => {
           </div>
         );
       })}
-      ;
     </section>
   );
 };
