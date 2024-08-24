@@ -6,10 +6,11 @@ const useFetch = (url) => {
   const [error, setError] = useState(null);
 
   const abortController = new AbortController();
+  const signal = abortController.signal;
 
   useEffect(() => {
     setTimeout(() => {
-      fetch(url)
+      fetch(url, { signal })
         .then((res) => {
           console.log("Fetch is successful");
           if (res.ok) {
@@ -39,7 +40,7 @@ const useFetch = (url) => {
       abortController.abort();
       console.log(" useFetch() Cleanup function is called");
     };
-  }, []);
+  }, [url]);
 
   return { data, loading, error };
 };

@@ -1,24 +1,15 @@
-const BlogList = ({ blogs }) => {
-  function printBlogs() {
-    return blogs.map((blog) => {
-      return (
-        <>
-          <section style={{ borderLeft: "3px solid" }}>
-            <div key={blog.id}>
-              <h3>{blog.title}</h3>
-              <p>{blog.content}</p>
-              <p>{blog.author}</p>
-            </div>
-          </section>
-        </>
-      );
-    });
-  }
+import useFetch from "../hooks/useFetch";
+import Blogs from "./Blogs";
+
+const BlogList = () => {
+  const url = "http://localhost:3099/blogs";
+  const { data, loading, error } = useFetch(url);
   return (
-    <section>
-      <h2 style={{ marginLeft: "8%" }}>All Blogs</h2>
-      {printBlogs()}
-    </section>
+    <div>
+      {loading && <section>Loading...</section>}
+      {error && <section>{error.message}</section>}
+      {data && <Blogs blogs={data} />}
+    </div>
   );
 };
 
