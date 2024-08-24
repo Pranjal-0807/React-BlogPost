@@ -6,11 +6,15 @@ import useFetch from "./hooks/useFetch";
 function App() {
   const url = "http://localhost:3099/blogs";
 
-  const { data } = useFetch(url);
+  const { data, loading, error } = useFetch(url);
 
   return (
     <>
-      <AppRouter blogs={data} />
+      <div>
+        {loading && <section>Loading...</section>}
+        {error && <section>{error.message}</section>}
+        {data && <AppRouter blogs={data} />}
+      </div>
       <Footer />
     </>
   );
