@@ -7,6 +7,7 @@ import Error from "../components/Error";
 import Contact from "../components/Contact";
 import NewBlog from "../components/NewBlog";
 import Footer from "../components/Footer";
+import BlogDetail from "../components/BlogDetail";
 
 const AppRouter = () => {
   return (
@@ -15,7 +16,8 @@ const AppRouter = () => {
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/blogList" element={<BlogList />} />
+          <Route path="/blogs" element={<BlogList />} />
+          <Route path="/blogs/:id" element={<BlogDetail />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/newBlog" element={<NewBlog />} />
