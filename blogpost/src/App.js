@@ -1,6 +1,6 @@
 import AppRouter from "./routes/AppRouter";
 import ContextApp from "./context/ContextApp";
-import Mode from "./components/Mode";
+import Mode from "./Components/Mode";
 
 function App() {
   return (
