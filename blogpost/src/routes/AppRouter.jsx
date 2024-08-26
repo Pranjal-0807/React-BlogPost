@@ -8,7 +8,7 @@ import Contact from "../Components/Contact";
 import NewBlog from "../Components/NewBlog";
 import Footer from "../Components/Footer";
 import BlogDetail from "../Components/BlogDetail";
-import Mode from "../Components/Mode";
+// import Mode from "../Components/Mode";
 
 const AppRouter = () => {
   return (
