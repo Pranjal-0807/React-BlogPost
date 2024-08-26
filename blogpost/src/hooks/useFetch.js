@@ -9,32 +9,30 @@ const useFetch = (url) => {
   const signal = abortController.signal;
 
   useEffect(() => {
-    setTimeout(() => {
-      fetch(url, { signal })
-        .then((res) => {
-          console.log("Fetch is successful");
-          if (res.ok) {
-            return res.json();
-          } else {
-            throw Error("Error fetching data from API");
-          }
-        })
-        .then((data) => {
-          console.log("JSON parsing is successful");
-          setData(data);
+    fetch(url, { signal })
+      .then((res) => {
+        console.log("Fetch is successful");
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw Error("Error fetching data from API");
+        }
+      })
+      .then((data) => {
+        console.log("JSON parsing is successful");
+        setData(data);
+        setLoading(false);
+        setError(null);
+      })
+      .catch((err) => {
+        if (err.name === "AbortError") {
+          console.log("Fetch is aborted");
+        } else {
           setLoading(false);
-          setError(null);
-        })
-        .catch((err) => {
-          if (err.name === "AbortError") {
-            console.log("Fetch is aborted");
-          } else {
-            setLoading(false);
-            setError(err);
-          }
-          console.log("Error fetching data from API");
-        });
-    }, 2000);
+          setError(err);
+        }
+        console.log("Error fetching data from API");
+      });
 
     return () => {
       abortController.abort();

@@ -3,34 +3,38 @@ import { useNavigate } from "react-router-dom";
 
 const NewBlog = () => {
   const [title, setTitle] = useState("");
+  const [summary, setSummary] = useState("");
   const [content, setContent] = useState("");
-  const [sector, setSector] = useState("Health");
   const [author, setAuthor] = useState("");
   const [pending, setPending] = useState(false);
 
   const navigate = useNavigate();
+  const postUrl = "https://blogpost-backend-k0pr.onrender.com/blogs";
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setPending(true);
-    const blog = { title, content, sector, author };
+    const blog = { title, summary, content, author };
     console.log(blog);
-    setTimeout(() => {
-      fetch("http://localhost:3099/blogs", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(blog),
-      })
-        .then((res) => {
+
+    fetch(postUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(blog),
+    })
+      .then((res) => {
+        if (res.ok) {
           console.log("New Blog added");
           setPending(false);
           navigate("/blogs");
-        })
-        .catch((err) => {
-          console.log("Error: ", err);
-          setPending(false);
-        });
-    }, 5000);
+        } else {
+          throw new Error("Failed to add new blog");
+        }
+      })
+      .catch((err) => {
+        console.log("Error: ", err);
+        setPending(false);
+      });
   };
 
   return (
@@ -48,6 +52,17 @@ const NewBlog = () => {
           }}
         />
         <br /> <br />
+        <label>Summary</label>
+        <input
+          type="text"
+          required
+          value={summary}
+          placeholder="Enter the summary here"
+          onChange={(e) => {
+            setSummary(e.target.value);
+          }}
+        ></input>
+        <br /> <br />
         <label>Content</label>
         <textarea
           required
@@ -57,18 +72,6 @@ const NewBlog = () => {
             setContent(e.target.value);
           }}
         ></textarea>
-        <br /> <br />
-        <label>Sector</label>
-        <select
-          required
-          value={sector}
-          onChange={(e) => {
-            setSector(e.target.value);
-          }}
-        >
-          <option value="Health">Health</option>
-          <option value="Finance">Finance</option>
-        </select>
         <br /> <br />
         <label>Author</label>
         <input

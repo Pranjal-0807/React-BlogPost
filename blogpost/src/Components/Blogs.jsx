@@ -5,9 +5,9 @@ const Blogs = ({ blogs }) => {
     <section>
       <h1>All Blogs</h1>
       {blogs.map((blog) => {
-        const url = `/blogs/${blog.id}`;
+        const url = `/blogs/${blog._id}`;
         return (
-          <div key={blog.id}>
+          <div key={blog._id}>
             <Link to={url}>
               <h2>{blog.title}</h2>
             </Link>
