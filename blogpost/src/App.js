@@ -5,8 +5,8 @@ import Mode from "./components/Mode";
 function App() {
   return (
     <>
-      {/* <AppRouter /> */}
-      <ContextApp />
+      <AppRouter /> 
+    {/* <ContextApp /> */}
     </>
   );
 }
