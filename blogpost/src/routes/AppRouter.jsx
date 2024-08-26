@@ -1,14 +1,14 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import NavBar from "../components/NavBar";
-import Home from "../components/Home";
-import About from "../components/About";
-import BlogList from "../components/BlogList";
-import Error from "../components/Error";
-import Contact from "../components/Contact";
-import NewBlog from "../components/NewBlog";
-import Footer from "../components/Footer";
-import BlogDetail from "../components/BlogDetail";
-import Mode from "../components/Mode";
+import NavBar from "../Components/NavBar";
+import Home from "../Components/Home";
+import About from "../Components/About";
+import BlogList from "../Components/BlogList";
+import Error from "../Components/Error";
+import Contact from "../Components/Contact";
+import NewBlog from "../Components/NewBlog";
+import Footer from "../Components/Footer";
+import BlogDetail from "../Components/BlogDetail";
+import Mode from "../Components/Mode";
 
 const AppRouter = () => {
   return (
