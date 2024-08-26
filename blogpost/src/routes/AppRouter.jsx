@@ -8,12 +8,14 @@ import Contact from "../components/Contact";
 import NewBlog from "../components/NewBlog";
 import Footer from "../components/Footer";
 import BlogDetail from "../components/BlogDetail";
+import Mode from "../components/Mode";
 
 const AppRouter = () => {
   return (
     <div className="App">
       <Router>
         <NavBar />
+        {/* <Mode /> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/blogs" element={<BlogList />} />
