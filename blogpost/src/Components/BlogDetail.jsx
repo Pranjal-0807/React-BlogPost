@@ -4,22 +4,17 @@ import useFetch from "../hooks/useFetch";
 const BlogDetail = () => {
   const { id } = useParams();
 
+  const url = "https://blogpost-backend-k0pr.onrender.com/blogs/" + id;
+  const { data, loading, error } = useFetch(url);
   const navigate = useNavigate();
 
-  const url = "http://localhost:3099/blogs/" + id;
-  const { data, loading, error } = useFetch(url);
-
   const handleDelete = () => {
-    fetch(url, {
-      method: "DELETE",
-    })
+    fetch(url, { method: "DELETE" })
       .then((res) => {
         console.log("Blog deleted");
         navigate("/blogs");
       })
-      .catch((err) => {
-        console.log("Error: ", err);
-      });
+      .catch((err) => console.log("Error: ", err));
   };
 
   return (
